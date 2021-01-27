@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+      href="https://image.freepik.com/vector-gratis/lindo-perro-corgi-dibujos-animados-corazon_138676-2533.jpg"
+      type="image/x-icon" alt="Imagen: Freepik.com">
+
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <title>Vue3 CDN Install</title>
+    <!-- Vue3 CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      /**Create an app type Vue*/
+      const app = Vue.createApp(
+        { /**
+          * Like this we create an App that contains an Object by default
+          * this one, 'data()' method returns an object propieties to the page that require over
+          * the 'mounted' area which is the #app division.
+          */
+          data() {
+            return {
+              title: "Hola",
+              name: "Ivan"
+            }
+          }
+
+        });
+    </script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Bindings -->
+      <h1>{{title}}</h1>
+      <h3>{{name}}</h3>
+    </div>
+
+    <script>
+      const loadApp = app.mount("#app");
+    </script>
+  </body>
+
+</html>
