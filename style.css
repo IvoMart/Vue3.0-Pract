@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  margin: 0%;
+  padding: 0 3em;
+  width: 65vw;
+  border: 25px double hsla(229, 75%, 63%, 0.61);
+}
+
+.bueno {
+  color: #065806;
+  padding: 0;
+  margin: 0;
+  font-size: 5rem;
+}
+
+.malo {
+  color: rgb(124, 16, 16);
+  padding: 0;
+  margin: 0;
+  font-size: 5rem;
+}
+
+.styling {
+  padding: 0 0 0 2em;
+  /*Top Left Bottom Right*/
+  background-color: #e7c425;
+  width: 100vw;
+  height: 20vh;
+  border-top: 15px solid #084c8b77;
+}
+
+.titulo {
+  color: #0ec40e;
+  font-size: 2em;
+  margin: 0;
+  flex-grow: 2;
+}
+
+.parrafo {
+  color: #084c8b;
+  margin: 0;
+  flex-grow: 2;
+}

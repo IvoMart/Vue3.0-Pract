@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon"
+      href="https://image.freepik.com/vector-gratis/lindo-perro-corgi-dibujos-animados-corazon_138676-2533.jpg"
+      type="image/x-icon" alt="Imagen: Freepik.com">
+
+    <link href="style.css" rel="stylesheet">
+    <title>Vue3 CDN - Json</title>
+    <!-- Vue3 CDN -->
+    <script src="vue.global.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body>
+    <div id="app" class="app">
+      <div :class="classCont">
+        <h1>A Contenedor con v-bindings from a JSON object</h1>
+        <!-- Bindings -->
+        <h2>{{user}}</h2>
+        <p>We can see now, that is a Json object we are receiving.</p>
+        <p>For us to split info, we call "user.nombre", "user.edad" and "user.peso"</p>
+        <h3>{{user.nombre}}</h3>
+        <h3>{{user.edad}}</h3>
+
+        <p>We can Validate info: Asking whether the age is over 18 or not</p>
+        <h3>{{user.edad < 18 ? "No se admiten menores de 18 años" : "Acceso concedido."}}</h3>
+
+        <h3>{{user.peso}} Kg</h3>
+
+        <p>Vemos que el usuario contiene una propiedad de tipo 'array' "user.tvChannels".
+          Para mostrar los valores que se almacenan dentro de la lista usaremos "user.tvChannels[#index] para llamar a
+          algún valor en particular,
+          o bien para iterar podemos implementar la función `for(){}`"
+        </p>
+        <h3>Canal de Tv 1:{{user.tvChannels[0]}}</h3>
+        <h3>Canal de Tv 2:{{user.tvChannels[1]}}</h3>
+        <h3>Canal de Tv 3:{{user.tvChannels[2]}}</h3>
+
+        <div style="background-color: aquamarine; text-align: start;">
+          <ul>
+            <li v-for="channel in user.tvChannels">{{ channel }}</li>
+          </ul>
+          <ol style="border-top: 1.5px dashed darkgreen; padding-top: 10px;">
+            <li v-for="(channel, index) in user.tvChannels" :key="index"> ídice {{index}} = {{ channel}} </li>
+          </ol>
+        </div>
+
+        <br>
+        <hr>
+        <p>Adding a Vue3 binding to an url, especified at user propieties: "user.urlG"</p>
+        <p>This link will open in a new tab in the browser.</p>
+        <a style="font-size: 5rem;" v-bind:href="user.urlG" target="_blank">Google</a>
+        <br>
+        <hr>
+        <div style="display: flex;">
+          <img style="display: flex; padding: 0; margin: 1em; justify-self: flex-start; height: 150px;" :src="user.pic1"
+            alt="Image taken from pixabay">
+          <p style="display: flex; font-family: Tahoma, Geneva; font-size: 2em;">This `baby pic` is one taken from
+            pixabay by using a link and binding it by Vue in the "user" objet propieties.<br>"user.pic1" is the info
+            granted in v-bind:>img src tag.</p>
+        </div>
+      </div>
+      <div :class="classSty">
+        <h1 :class="user.classTit">Addin some user style by Vue binding</h1>
+        <p :class="user.classWrong">Division 1</p>
+      </div>
+      <div :class="classSty">
+        <h3 :class="user.classParr">Addin some user style</h3>
+        <p :class="user.classPass">Division 2</p>
+      </div>
+      <div style="height: fit-content;" :class="classSty">
+        <h3 :class="user.classParr">Addin v-binding user style</h3>
+        <p :class="user.classVbind">Division 3</p>
+        <p :class="user.classParr">La información en este caso es modificada según la condición si <em>user.edad >=
+            18</em><br>
+            <strong>user.edad >=18 ? user.classVbind = "malo" : user.classVbind = "bueno" </strong><br>
+          Lo malo es que se realiza la búsqueda del resultado y se escribe el valor en el documento.</p>
+        <p> V-bind class =
+          {{ user.edad >=18 ? user.classVbind = "malo" : user.classVbind = "bueno" }} (⬅ resultado)</p>
+      </div>
+      <div style="height: fit-content;" :class="classSty">
+        <p :class="user.classParr">No obstante Vue integra la función if() y renderiza el resultado que sea True: <em>v-if="condition"</em></p>
+        <h2 v-if="user.edad >= 18" :class="user.classPass">Eres mayor de edad.</h2>
+        <h2 v-else :class="user.classWrong">Eres menor de edad.</h2>
+        <h3 v-if="!(user.edad <= 18)" :class="user.classPass">No eres menor de edad. (IF)</h3>
+        <h3 v-else :class="user.classWrong">No eres mayor de edad. (ELSE)</h3>
+      </div>
+    </div>
+
+    <script>
+      const loadApp = app.mount("#app");
+    </script>
+  </body>
+
+</html>
